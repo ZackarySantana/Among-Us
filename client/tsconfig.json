@@ -1,0 +1,22 @@
+{
+    "exclude": ["./node_modules"],
+    "include": ["./src/*.ts", "createBoundsFromMask.ts"],
+    "compilerOptions": {
+        "lib": ["DOM", "DOM.Iterable", "ES2019"],
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "jsx": "react-jsx",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "target": "ES2019",
+        "strict": true,
+        "baseUrl": ".",
+        "paths": {
+            "~/*": ["./*"]
+        },
+        "types": ["vite/client", "node"],
+        "noEmit": true,
+        "forceConsistentCasingInFileNames": true,
+        "allowJs": false
+    }
+}
