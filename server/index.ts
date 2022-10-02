@@ -13,6 +13,11 @@ const io = require("socket.io")(server, {
 });
 
 io.on("connection", (socket: Socket) => {
+    const room = socket.handshake.query.room;
+
+    socket.join(room ?? "");
+    io.to(room).emit("playerJoined");
+
     console.log("player connected");
 
     socket.on("disconnect", () => {

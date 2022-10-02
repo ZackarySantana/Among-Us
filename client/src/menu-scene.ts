@@ -13,6 +13,11 @@ import {
 } from "./utils/constants";
 import { movePlayer } from "./utils/movement";
 import { animateMovement } from "./utils/animation";
+import {
+    getQueryParameter,
+    getRandomRoomCode,
+    setQueryParameter,
+} from "./utils/misc";
 
 export type PlayerInfo = {
     sprite: Phaser.GameObjects.Sprite;
@@ -24,6 +29,16 @@ const player = {} as PlayerInfo;
 const otherPlayer = {} as PlayerInfo;
 let socket: Socket;
 let pressedKeys = [] as string[];
+
+const roomQP = getQueryParameter("room");
+const room = roomQP == "" ? getRandomRoomCode() : roomQP;
+if (roomQP == "") {
+    window.history.replaceState(
+        {},
+        document.title,
+        setQueryParameter({ room })
+    );
+}
 
 export class MenuScene extends Phaser.Scene {
     // private startKey!: Phaser.Input.Keyboard.Key;
@@ -40,7 +55,7 @@ export class MenuScene extends Phaser.Scene {
         //     Phaser.Input.Keyboard.KeyCodes.S
         // );
         // this.startKey.isDown = false;
-        socket = io("localhost:3000");
+        socket = io("localhost:3000?room=" + room);
         this.load.image("ship", shipImg);
         this.load.spritesheet("player", playerSprite, {
             frameWidth: PLAYER_SPRITE_WIDTH,
