@@ -30,4 +30,8 @@ export const decodeImageFromFile = (
 };
 
 export const decodeMapBounds = () =>
-    decodeImageFromFile(2160, "./shipmask.png", "./src/utils/mapBounds.ts");
+    decodeImageFromFile(
+        2160,
+        ".src/assets/shipmask.png",
+        "./src/utils/mapBounds.ts"
+    );

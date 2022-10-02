@@ -12,6 +12,13 @@ export const animateMovement = (
         !keys.some((key) => runningKeys.includes(key)) &&
         playerSprite.anims.isPlaying
     ) {
-        playerSprite.stop();
+        setInterval(() => {
+            if (
+                !keys.some((key) => runningKeys.includes(key)) &&
+                playerSprite.anims.isPlaying
+            ) {
+                playerSprite.stop();
+            }
+        }, 250);
     }
 };
