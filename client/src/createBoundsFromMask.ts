@@ -11,8 +11,6 @@ export const decodeImageFromFile = (
     const pixels = png.decodePixels();
     const width = png.width;
 
-    console.log(width);
-
     const result = {} as { [key: number]: number[] };
     for (let i = 0; i < pixels.length; i += 4) {
         const row = Math.floor(i / 4 / width);
