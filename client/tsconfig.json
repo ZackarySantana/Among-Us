@@ -2,7 +2,7 @@
     "exclude": ["./node_modules"],
     "include": ["./src/*.ts", "createBoundsFromMask.ts"],
     "compilerOptions": {
-        "lib": ["DOM", "DOM.Iterable", "ES2019"],
+        "lib": ["DOM", "DOM.Iterable", "ES2019", "ScriptHost"],
         "isolatedModules": true,
         "esModuleInterop": true,
         "jsx": "react-jsx",

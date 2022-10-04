@@ -7,6 +7,7 @@
     "build": "npm-run-all maps build:*",
     "build:compile": "tsc",
     "build:vite": "vite build",
+    "start": "node host.js",
     "serve": "vite preview"
   },
   "devDependencies": {
@@ -17,6 +18,9 @@
     "vite": "^3.1.4"
   },
   "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.18.1",
+    "helmet": "^6.0.0",
     "phaser": "^3.54.0",
     "png-ts": "^0.0.3",
     "socket.io-client": "^4.5.2"
