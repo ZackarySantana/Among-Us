@@ -11,13 +11,15 @@ const port = 4173;
 app.use(compression());
 app.use(helmet());
 
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        "img-src": ["'self'", "data:", "blob:"],
+        "connect-src": ["'self'", "ws:localhost:3000", "wss:localhost:3000", "http:localhost:3000", "https:localhost:3000"],
+    }
+}))
+
 app.use("/", (_, res, next) => {
     res.set("Cache-control", "public, max-age=0"); // 14400s = 60s/m * 60m/h * 4h
-    res.set(
-        "Content-Security-Policy",
-        "default-src 'self' data: blob:; style-src 'self' 'unsafe-inline';"
-    );
-
     next();
 });
 
