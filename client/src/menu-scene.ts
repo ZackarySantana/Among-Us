@@ -1,8 +1,8 @@
 import Phaser from "phaser";
 import { io, Socket } from "socket.io-client";
 
-import shipImg from "./assets/ship.png";
-import playerSprite from "./assets/player.png";
+import shipImg from "/assets/ship.png";
+import playerSprite from "/assets/player.png";
 import {
     PLAYER_SPRITE_HEIGHT,
     PLAYER_SPRITE_WIDTH,

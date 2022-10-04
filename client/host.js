@@ -11,15 +11,12 @@ const port = 4173;
 app.use(compression());
 app.use(helmet());
 
-app.use("/", (req, res, next) => {
-    res.set("Cache-control", "public, max-age=14400"); // 14400s = 60s/m * 60m/h * 4h
+app.use("/", (_, res, next) => {
+    res.set("Cache-control", "public, max-age=0"); // 14400s = 60s/m * 60m/h * 4h
     res.set(
         "Content-Security-Policy",
-        "default-src 'self' data:; style-src 'self' 'unsafe-inline';"
+        "default-src 'self' data: blob:; style-src 'self' 'unsafe-inline';"
     );
-    if (req.path === "/") {
-        ++app.locals.page_views;
-    }
 
     next();
 });
