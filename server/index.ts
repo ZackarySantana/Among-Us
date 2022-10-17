@@ -24,7 +24,7 @@ io.on("connection", (socket: Socket) => {
         console.log("player disconnected");
     });
 
-    socket.on("move", ({ x, y }) => {
+    socket.on("move", ({ x, y }: { x: number; y: number }) => {
         socket.broadcast.emit("move", { x, y });
     });
     socket.on("moveEnd", () => {
